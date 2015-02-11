@@ -1,0 +1,14 @@
+PODS:
+  - ABCounterViewController (0.3.0)
+
+DEPENDENCIES:
+  - ABCounterViewController (from `../`)
+
+EXTERNAL SOURCES:
+  ABCounterViewController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ABCounterViewController: c164c94a80668b4e722aec884daca7c59eae83ce
+
+COCOAPODS: 0.35.0

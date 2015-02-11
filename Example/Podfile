@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'ABCounterViewController', :exclusive => true do
+  pod "ABCounterViewController", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "ABCounterViewController", :path => "../"
+
+  
+end

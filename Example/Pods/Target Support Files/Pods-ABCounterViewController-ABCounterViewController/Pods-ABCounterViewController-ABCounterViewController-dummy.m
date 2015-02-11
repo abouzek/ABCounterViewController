@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ABCounterViewController_ABCounterViewController : NSObject
+@end
+@implementation PodsDummy_Pods_ABCounterViewController_ABCounterViewController
+@end
