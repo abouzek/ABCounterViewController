@@ -18,19 +18,26 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 An instance of ABCounterViewController should be created using the designated initializer:
 	
-    -(instancetype) initWithStartCount:(float)startCount
-                              minCount:(float)minCount
-                              maxCount:(float)maxCount
-                          stepInterval:(float)stepInterval
-                  numberTextAttributes:(NSDictionary *)numberTextAttributes
-                  buttonTextAttributes:(NSDictionary *)buttonTextAttributes
+    -(instancetype) initWithDelegate:(id<ABCounterViewController)delegate
+    			  startCount:(float)startCount
+                            minCount:(float)minCount
+                            maxCount:(float)maxCount
+                        stepInterval:(float)stepInterval
+                numberTextAttributes:(NSDictionary *)numberTextAttributes
+                buttonTextAttributes:(NSDictionary *)buttonTextAttributes
 
 * numberTextAttributes and buttonTextAttributes are standard text attribute NSDictionaries.
 * startCount determines the starting number, minCount and maxCount determine the minimum and maximum numbers the counter can reach.
 * stepInterval is the increment and decrement interval.
 
+The delegate method:
+
+	-(void) counterViewController:(ABCounterViewController *)counterViewController
+		         didUpdateToCount:(float)count
+
+will be called each time the count is updated.
+
 The frame must be set manually after initialization and looks best when the width is at least double the height.
-    
 
 ## Installation
 
