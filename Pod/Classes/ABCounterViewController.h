@@ -12,14 +12,14 @@
 
 @interface ABCounterViewController : UIViewController
 
-@property (weak, nonatomic) id<ABCounterViewControllerDelegate> delegate;
+-(instancetype)initWithDelegate:(id<ABCounterViewControllerDelegate>)delegate
+                     startCount:(float)startCount
+                       minCount:(float)minCount
+                       maxCount:(float)maxCount
+                   stepInterval:(float)stepInterval
+           numberTextAttributes:(NSDictionary *)numberTextAttributes
+           buttonTextAttributes:(NSDictionary *)buttonTextAttributes;
 
--(instancetype)initWithStartCount:(float)startCount
-                         minCount:(float)minCount
-                         maxCount:(float)maxCount
-                     stepInterval:(float)stepInterval
-             numberTextAttributes:(NSDictionary *)numberTextAttributes
-             buttonTextAttributes:(NSDictionary *)buttonTextAttributes;
 @end
 
 

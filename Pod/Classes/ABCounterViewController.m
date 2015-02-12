@@ -13,6 +13,8 @@
 @property (nonatomic) float minCount, count, maxCount, stepInterval;
 @property (strong, nonatomic) NSDictionary *numberTextAttributes, *buttonTextAttributes;
 
+@property (weak, nonatomic) id<ABCounterViewControllerDelegate> delegate;
+
 @property (strong, nonatomic) IBOutlet ABCounterView *counterView;
 
 @end
@@ -20,13 +22,16 @@
 
 @implementation ABCounterViewController
 
--(instancetype)initWithStartCount:(float)startCount
-                         minCount:(float)minCount
-                         maxCount:(float)maxCount
-                     stepInterval:(float)stepInterval
-             numberTextAttributes:(NSDictionary *)numberTextAttributes
-             buttonTextAttributes:(NSDictionary *)buttonTextAttributes {
-    if (self = [super initWithNibName:NSStringFromClass([self class]) bundle:[NSBundle mainBundle]]) {
+-(instancetype)initWithDelegate:(id<ABCounterViewControllerDelegate>)delegate
+                     startCount:(float)startCount
+                       minCount:(float)minCount
+                       maxCount:(float)maxCount
+                   stepInterval:(float)stepInterval
+           numberTextAttributes:(NSDictionary *)numberTextAttributes
+           buttonTextAttributes:(NSDictionary *)buttonTextAttributes {
+    if (self = [super initWithNibName:NSStringFromClass([self class])
+                               bundle:[NSBundle mainBundle]]) {
+        self.delegate = delegate;
         self.count = startCount;
         self.minCount = minCount;
         self.maxCount = maxCount;
@@ -39,13 +44,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.counterView setupWithStartCount:self.count
-                     numberTextAttributes:self.numberTextAttributes
-                     buttonTextAttributes:self.buttonTextAttributes];
-    
-    self.counterView.delegate = self;
-    self.delegate = self.counterView;
+    [self.counterView setupWithDelegate:self
+                             startCount:self.count
+                   numberTextAttributes:self.numberTextAttributes
+                   buttonTextAttributes:self.buttonTextAttributes];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +60,8 @@
 -(void)setCount:(float)count {
     _count = count;
     [self.delegate counterViewController:self
-                        didUpdateToCount:_count];
+                        didUpdateToCount:count];
+    [self.counterView displayCount:count];
 }
 
 

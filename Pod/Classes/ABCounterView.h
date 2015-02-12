@@ -6,18 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ABCounterViewController.h"
 
 @protocol ABCounterViewDelegate;
 
 
-@interface ABCounterView : UIView <ABCounterViewControllerDelegate>
+@interface ABCounterView : UIView
 
-@property (weak, nonatomic) id<ABCounterViewDelegate> delegate;
-
--(void)setupWithStartCount:(float)startCount
-      numberTextAttributes:(NSDictionary *)numberTextAttributes
-      buttonTextAttributes:(NSDictionary *)buttonTextAttributes;
+-(void)setupWithDelegate:(id<ABCounterViewDelegate>)delegate
+              startCount:(float)startCount
+    numberTextAttributes:(NSDictionary *)numberTextAttributes
+    buttonTextAttributes:(NSDictionary *)buttonTextAttributes;
+-(void)displayCount:(float)count;
 
 @end
 

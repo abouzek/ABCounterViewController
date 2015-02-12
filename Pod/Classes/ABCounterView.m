@@ -9,6 +9,8 @@
 
 @interface ABCounterView ()
 
+@property (weak, nonatomic) id<ABCounterViewDelegate> delegate;
+
 @property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UIButton *plusButton;
 @property (strong, nonatomic) IBOutlet UIButton *minusButton;
@@ -22,9 +24,10 @@
     self.numberLabel.text = nil;
 }
 
--(void)setupWithStartCount:(float)startCount
-      numberTextAttributes:(NSDictionary *)numberTextAttributes
-      buttonTextAttributes:(NSDictionary *)buttonTextAttributes {
+-(void)setupWithDelegate:(id<ABCounterViewDelegate>)delegate
+              startCount:(float)startCount
+    numberTextAttributes:(NSDictionary *)numberTextAttributes
+    buttonTextAttributes:(NSDictionary *)buttonTextAttributes {
     NSString *countString = [NSString stringWithFormat:@"%@", @(startCount)];
     self.numberLabel.attributedText = [[NSAttributedString alloc] initWithString:countString
                                                                       attributes:numberTextAttributes];
@@ -39,11 +42,7 @@
     }
 }
 
-
-#pragma mark - ABCounterViewControllerDelegate methods
-
--(void)counterViewController:(ABCounterViewController *)counterViewController
-            didUpdateToCount:(float)count {
+-(void)displayCount:(float)count {
     NSString *countString = [NSString stringWithFormat:@"%@", @(count)];
     NSDictionary *textAttributes = [self.numberLabel.attributedText attributesAtIndex:0
                                                                        effectiveRange:NULL];
