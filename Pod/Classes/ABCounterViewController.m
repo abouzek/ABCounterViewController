@@ -68,13 +68,13 @@
 #pragma mark - AVCounterViewDelegate methods
 
 -(void)counterViewDidIncrement:(ABCounterView *)counterView {
-    if ((self.count + self.stepInterval) < self.maxCount) {
+    if ((self.count + self.stepInterval) <= self.maxCount) {
         self.count += self.stepInterval;
     }
 }
 
 -(void)counterViewDidDecrement:(ABCounterView *)counterView {
-    if ((self.count - self.stepInterval) > self.minCount) {
+    if ((self.count - self.stepInterval) >= self.minCount) {
         self.count -= self.stepInterval;
     }
 }

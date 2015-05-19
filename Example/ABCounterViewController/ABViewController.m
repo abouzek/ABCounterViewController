@@ -9,11 +9,6 @@
 #import "ABViewController.h"
 #import <ABCounterViewController/ABCounterViewController.h>
 
-@interface ABViewController ()
-
-@end
-
-
 @implementation ABViewController
 
 - (void)viewDidLoad
@@ -28,12 +23,13 @@
                                            NSFontAttributeName:[UIFont fontWithName:@"AvenirNext-DemiBold" size:50]};
     NSDictionary *buttonTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],
                                            NSFontAttributeName:[UIFont fontWithName:@"AvenirNext-Regular" size:45]};
-    ABCounterViewController *counterViewController = [[ABCounterViewController alloc] initWithStartCount:1
-                                                                                                minCount:1
-                                                                                                maxCount:10
-                                                                                            stepInterval:0.5
-                                                                                    numberTextAttributes:numberTextAttributes
-                                                                                    buttonTextAttributes:buttonTextAttributes];
+    ABCounterViewController *counterViewController = [[ABCounterViewController alloc] initWithDelegate:nil
+                                                                                            startCount:1
+                                                                                              minCount:1
+                                                                                              maxCount:10
+                                                                                          stepInterval:0.5
+                                                                                  numberTextAttributes:numberTextAttributes
+                                                                                  buttonTextAttributes:buttonTextAttributes];
     [self addChildViewController:counterViewController];
     [self.view addSubview:counterViewController.view];
     

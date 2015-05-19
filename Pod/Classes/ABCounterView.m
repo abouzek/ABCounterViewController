@@ -28,12 +28,13 @@
               startCount:(float)startCount
     numberTextAttributes:(NSDictionary *)numberTextAttributes
     buttonTextAttributes:(NSDictionary *)buttonTextAttributes {
+    self.delegate = delegate;
     NSString *countString = [NSString stringWithFormat:@"%@", @(startCount)];
     self.numberLabel.attributedText = [[NSAttributedString alloc] initWithString:countString
                                                                       attributes:numberTextAttributes];
-    self.plusButton.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"+"
+    self.plusButton.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:self.plusButton.titleLabel.text
                                                                                 attributes:buttonTextAttributes];
-    self.minusButton.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"-"
+    self.minusButton.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:self.minusButton.titleLabel.text
                                                                                  attributes:buttonTextAttributes];
     if (buttonTextAttributes[NSForegroundColorAttributeName]) {
         UIColor *buttonTextColor = buttonTextAttributes[NSForegroundColorAttributeName];

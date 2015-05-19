@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ABCounterViewController"
-  s.version          = "0.3.0"
+  s.version          = "0.4.0"
   s.summary          = "A minimalistic counter control"
   s.description      = "A minimalistic counter control with increment and decrement functionality. Includes the ability to set a starting, maximum and minimum values as well as text attributes."
   s.homepage         = "https://github.com/abouzek/ABCounterViewController"
